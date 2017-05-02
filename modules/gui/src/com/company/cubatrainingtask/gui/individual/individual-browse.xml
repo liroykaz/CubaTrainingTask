@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.cubatrainingtask.gui.individual.IndividualBrowse"
+        focusComponent="individualsTable"
+        lookupComponent="individualsTable"
+        messagesPack="com.company.cubatrainingtask.gui.individual">
+    <dsContext>
+        <groupDatasource id="individualsDs"
+                         class="com.company.cubatrainingtask.entity.Individual"
+                         view="individual-view">
+            <query>
+                <![CDATA[select e from cubatrainingtask$Individual e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="individualsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="individualsTable"
+                datasource="individualsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="individualsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="passportNo"/>
+                <column id="center"/>
+            </columns>
+            <rows datasource="individualsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="individualsTable.create"/>
+                <button id="editBtn"
+                        action="individualsTable.edit"/>
+                <button id="removeBtn"
+                        action="individualsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

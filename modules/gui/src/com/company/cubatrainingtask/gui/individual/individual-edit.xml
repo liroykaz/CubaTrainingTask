@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.cubatrainingtask.gui.individual.IndividualEdit"
+        datasource="individualDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.cubatrainingtask.gui.individual">
+    <dsContext>
+        <datasource id="individualDs"
+                    class="com.company.cubatrainingtask.entity.Individual"
+                    view="individual-view"/>
+        <collectionDatasource id="servicesDs"
+                              class="com.company.cubatrainingtask.entity.CarServiceCenter"
+                              view="carServiceCenter-view">
+            <query>
+                <![CDATA[select e from cubatrainingtask$CarServiceCenter e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="individualDs">
+            <column width="250px">
+                <field id="name"
+                       datasource="individualDs"/>
+                <field id="phone"
+                       datasource="individualDs"/>
+                <field id="email"
+                       datasource="individualDs"/>
+                <field id="passportNo"/>
+                <field id="center"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

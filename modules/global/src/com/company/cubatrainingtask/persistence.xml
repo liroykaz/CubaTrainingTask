@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             version="2.0">
+    <persistence-unit name="CubaTrainingTask"
+                      transaction-type="RESOURCE_LOCAL">
+        <class>com.company.cubatrainingtask.entity.City</class>
+        <class>com.company.cubatrainingtask.entity.Customer</class>
+        <class>com.company.cubatrainingtask.entity.Individual</class>
+        <class>com.company.cubatrainingtask.entity.Company</class>
+        <class>com.company.cubatrainingtask.entity.CarServiceCenter</class>
+        <class>com.company.cubatrainingtask.entity.Employee</class>
+        <class>com.company.cubatrainingtask.entity.Repair</class>
+    </persistence-unit>
+</persistence>

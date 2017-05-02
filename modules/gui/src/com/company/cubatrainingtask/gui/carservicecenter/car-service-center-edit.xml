@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.cubatrainingtask.gui.carservicecenter.CarServiceCenterEdit"
+        datasource="carServiceCenterDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.cubatrainingtask.gui.carservicecenter">
+    <dsContext>
+        <datasource id="carServiceCenterDs"
+                    class="com.company.cubatrainingtask.entity.CarServiceCenter"
+                    view="carServiceCenter-view"/>
+        <groupDatasource id="employeesDs"
+                         class="com.company.cubatrainingtask.entity.Employee"
+                         view="employee-view">
+            <query>
+                <![CDATA[select e from cubatrainingtask$Employee e WHERE
+e.center.id = :ds$carServiceCenterDs.id
+]]>
+            </query>
+        </groupDatasource>
+        <groupDatasource id="repairsDs"
+                         class="com.company.cubatrainingtask.entity.Repair"
+                         view="repair-view">
+            <query>
+                <![CDATA[select e from cubatrainingtask$Repair e WHERE
+e.carServiceCenter.id = :ds$carServiceCenterDs.id]]>
+            </query>
+        </groupDatasource>
+        <groupDatasource id="customersDs"
+                         class="com.company.cubatrainingtask.entity.Customer"
+                         view="customer-view">
+            <query>
+                <![CDATA[select e from cubatrainingtask$Customer e WHERE
+e.center.id = :ds$carServiceCenterDs.id]]>
+            </query>
+        </groupDatasource>
+        <datasource id="customerDs"
+                    class="com.company.cubatrainingtask.entity.Customer"
+                    view="customer-view"/>
+        <datasource id="employeeDs"
+                    class="com.company.cubatrainingtask.entity.Employee"
+                    view="employee-view"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true">
+        <tabSheet id="tabSheet"
+                  caption="tabSheet">
+            <tab id="EditService"
+                 caption="EditServiceTab"
+                 spacing="true">
+                <label id="serviceTitle"
+                       value="Service editing"/>
+                <fieldGroup id="fieldGroup"
+                            datasource="carServiceCenterDs">
+                    <column width="250px">
+                        <field id="name"/>
+                        <field id="phone"/>
+                        <field id="address"/>
+                        <field id="city"/>
+                    </column>
+                </fieldGroup>
+                <frame id="windowActions"
+                       height="100%"
+                       screen="editWindowActions"/>
+                <label id="employyesTitle"
+                       value="Employees"/>
+                <table id="empTable"
+                       height="201px"
+                       width="489px">
+                    <actions>
+                        <action id="edit"/>
+                        <action id="create"/>
+                        <action id="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="firstName"/>
+                        <column id="lastName"/>
+                        <column id="birthDate"/>
+                        <column id="email"/>
+                        <column id="salary"/>
+                        <column id="center"/>
+                    </columns>
+                    <rows datasource="employeesDs"/>
+                    <buttonsPanel>
+                        <button id="editButton"
+                                action="empTable.edit"
+                                caption="Edit"/>
+                        <button id="AddEmployee"
+                                action="empTable.create"
+                                caption="Create"
+                                width="100%"/>
+                        <button id="removeButton"
+                                action="empTable.remove"
+                                caption="Remove"/>
+                    </buttonsPanel>
+                </table>
+                <label id="repair"
+                       value="Repairs"/>
+                <table id="repairsTab"
+                       height="181px"
+                       width="371px">
+                    <actions>
+                        <action id="create"/>
+                        <action id="remove"/>
+                        <action id="edit"/>
+                    </actions>
+                    <columns>
+                        <column id="description"/>
+                        <column id="employee"/>
+                    </columns>
+                    <rows datasource="repairsDs"/>
+                    <buttonsPanel>
+                        <button id="addRepairButton"
+                                action="repairsTab.create"
+                                caption="Create"/>
+                        <button id="editButtonRepair"
+                                action="repairsTab.edit"
+                                caption="Edit"/>
+                        <button id="removeButtonRapir"
+                                action="repairsTab.remove"
+                                caption="Remove"/>
+                    </buttonsPanel>
+                </table>
+            </tab>
+            <tab id="CustomersTab"
+                 caption="CustomersTab"
+                 spacing="true">
+                <table id="customersTable"
+                       height="212px"
+                       textSelectionEnabled="true"
+                       width="307px">
+                    <actions>
+                        <action id="add"/>
+                        <action id="exclude"/>
+                    </actions>
+                    <columns>
+                        <column id="name"/>
+                        <column id="phone"/>
+                        <column id="email"/>
+                        <column id="center"/>
+                    </columns>
+                    <rows datasource="customersDs"/>
+                    <buttonsPanel>
+                        <button id="addButton"
+                                action="customersTable.add"
+                                caption="Add"
+                                invoke="onAddButtonClick"/>
+                        <button action="customersTable.exclude"
+                                caption="Delete"/>
+                    </buttonsPanel>
+                </table>
+            </tab>
+        </tabSheet>
+    </layout>
+</window>

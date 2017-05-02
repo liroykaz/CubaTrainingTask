@@ -1,0 +1,1 @@
+alter table CUBATRAININGTASK_CAR_SERVICE_CENTER drop column CUSTOMERS_ID cascade ;

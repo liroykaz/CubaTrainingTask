@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.cubatrainingtask.gui.repair.RepairEdit"
+        datasource="repairDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.cubatrainingtask.gui.repair">
+    <dsContext>
+        <datasource id="repairDs"
+                    class="com.company.cubatrainingtask.entity.Repair"
+                    view="repair-view"/>
+        <collectionDatasource id="employeesDs"
+                              class="com.company.cubatrainingtask.entity.Employee"
+                              view="employee-view">
+            <query>
+                <![CDATA[select e from cubatrainingtask$Employee e WHERE 
+e.center.id = :ds$repairDs.carServiceCenter.id]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="carServiceCentersDs"
+                              class="com.company.cubatrainingtask.entity.CarServiceCenter"
+                              view="carServiceCenter-view">
+            <query>
+                <![CDATA[select e from cubatrainingtask$CarServiceCenter e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="repairDs">
+            <column width="250px">
+                <field id="description"
+                       datasource="repairDs"/>
+                <field id="employee"
+                       caption="Employee"
+                       optionsDatasource="employeesDs"/>
+                <field id="carServiceCenter"
+                       optionsDatasource="carServiceCentersDs"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

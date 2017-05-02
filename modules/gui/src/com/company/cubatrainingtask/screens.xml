@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<screen-config xmlns="http://schemas.haulmont.com/cuba/screens.xsd">
+    <screen id="cubatrainingtask$City.edit"
+            template="com/company/cubatrainingtask/gui/city/city-edit.xml"/>
+    <screen id="cubatrainingtask$City.browse"
+            template="com/company/cubatrainingtask/gui/city/city-browse.xml"/>
+    <screen id="cubatrainingtask$Company.browse"
+            template="com/company/cubatrainingtask/gui/company/company-browse.xml"/>
+    <screen id="cubatrainingtask$Company.edit"
+            template="com/company/cubatrainingtask/gui/company/company-edit.xml"/>
+    <screen id="cubatrainingtask$Individual.browse"
+            template="com/company/cubatrainingtask/gui/individual/individual-browse.xml"/>
+    <screen id="cubatrainingtask$Individual.edit"
+            template="com/company/cubatrainingtask/gui/individual/individual-edit.xml"/>
+    <screen id="cubatrainingtask$CarServiceCenter.browse"
+            template="com/company/cubatrainingtask/gui/carservicecenter/car-service-center-browse.xml"/>
+    <screen id="cubatrainingtask$Employee.edit"
+            template="com/company/cubatrainingtask/gui/employee/employee-edit.xml"/>
+    <screen id="cubatrainingtask$Repair.edit"
+            template="com/company/cubatrainingtask/gui/repair/repair-edit.xml"/>
+    <screen id="cubatrainingtask$CarServiceCenter.edit"
+            template="com/company/cubatrainingtask/gui/carservicecenter/car-service-center-edit.xml"/>
+    <screen id="cubatrainingtask$Customer.browse"
+            template="com/company/cubatrainingtask/gui/customer/customer-browse.xml"/>
+    <screen id="cubatrainingtask$Employee.browse"
+            template="com/company/cubatrainingtask/gui/employee/employee-browse.xml"/>
+</screen-config>
